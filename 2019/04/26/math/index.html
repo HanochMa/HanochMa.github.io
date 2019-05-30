@@ -5,14 +5,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>回顾高中数学知识 - Hanoch - 保持专注</title>
+    <title>浅谈“this” - Hanoch - 保持专注</title>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="前两天买了一整套考研复习资料，翻开高数课本，我懵了，原来自己把高中和大学的知识全忘了，通过这几天的学习整理和做题勉强捡起来一些，现在做一些总结。
-三角函数
-三角函数是基本初等函数之一，是以角度（数学,"> 
+    <meta name="description" content="在JavaScript中，我们对this肯定并不陌生，在函数中，我们经常用this.foo来访问对象属性，但是在一些复杂的函数逻辑中，我们需要搞清楚的一个问题是this到底指向谁？在近期的学习回顾中,"> 
     <meta name="author" content="Hanoch Ma"> 
     <link rel="alternative" href="atom.xml" title="Hanoch - 保持专注" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -37,7 +35,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
     <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">回顾高中数学知识</h3>
+    <h3 class="subtitle">浅谈“this”</h3>
     <div class="social">
         <!--<div class="like-icon">-->
             <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
@@ -55,28 +53,46 @@
     <div class="section">
         <div class="article">
     <div class="main">
-        <h1 class="title">回顾高中数学知识</h1>
+        <h1 class="title">浅谈“this”</h1>
         <div class="stuff">
             <span>四月 26, 2019</span>
             
 
         </div>
         <div class="content markdown">
-            <p>前两天买了一整套考研复习资料，翻开高数课本，我懵了，原来自己把高中和大学的知识全忘了，通过这几天的学习整理和做题勉强捡起来一些，现在做一些总结。</p>
-<h3 id="三角函数"><a href="#三角函数" class="headerlink" title="三角函数"></a>三角函数</h3><blockquote>
-<p>三角函数是基本初等函数之一，是以角度（数学上最常用弧度制，下同）为自变量，角度对应任意角终边与单位圆交点坐标或其比值为因变量的函数。（这是书上写的，并不怎么看的懂） </p>
+            <p>在JavaScript中，我们对<strong>this</strong>肯定并不陌生，在函数中，我们经常用<strong>this.foo</strong>来访问对象属性，但是在一些复杂的函数逻辑中，我们需要搞清楚的一个问题是<strong>this</strong>到底指向谁？在近期的学习回顾中，我且谈一谈自己对<strong>this</strong>的理解。</p>
+<h3 id="调用位置"><a href="#调用位置" class="headerlink" title="调用位置"></a>调用位置</h3><blockquote>
+<p>在理解<strong>this</strong>的绑定过程之前，首先我们要理解的一个概念是<strong>调用位置</strong>，<strong>调用位置</strong>就是函数在代码中被调用的位置（这里特别要强调的一点是：<strong>调用位置</strong>并不是<strong>声明位置</strong>），只有仔细分析<strong>调用位置</strong>才能搞清楚<strong>this</strong>到底指向的（或者说引用的）是什么？</p>
 </blockquote>
-<h4 id="在我理解常用的三角函数有"><a href="#在我理解常用的三角函数有" class="headerlink" title="在我理解常用的三角函数有"></a>在我理解常用的三角函数有</h4><ul>
-<li>sin x(正弦)</li>
-<li>cos x(余弦)</li>
-<li>tan x(正切) tanx = sinx/cosx</li>
-<li>cot x(余切) cotx = 1/tanx</li>
-<li>sec x(正割) secx = 1/cosx</li>
-<li>csc x(余割) cscx = 1/sinx<h4 id="反三角函数"><a href="#反三角函数" class="headerlink" title="反三角函数"></a>反三角函数</h4></li>
-<li>反正弦函数 arcsin x  </li>
-<li>反余弦函数 arccos x<br><strong> arcsin x + arccos x = Π/2 </strong></li>
-</ul>
-<h3 id="数列基础"><a href="#数列基础" class="headerlink" title="数列基础"></a>数列基础</h3><h3 id="因式分解"><a href="#因式分解" class="headerlink" title="因式分解"></a>因式分解</h3>
+<p>通常来说，要寻找调用位置就是寻找“函数被调用的位置”，这听起来很简单，只需要看函数在哪被调用，但是做起来却并没有那么容易，因为有些编程模式可能会隐藏真正的调用位置，所以最重要的是分析<strong>调用栈</strong>。</p>
+<p>那么什么是调用栈？调用栈就是指<strong>为了到达当前执行位置所调用的所有函数</strong>，这听起来可能会有些绕口，用通俗的话来讲，函数要被调用首先得进栈，若一个调用栈中包含A,B,C三个函数，且他们的调用顺序为A-&gt;B-&gt;C，而我们关心的调用位置则是当前正在执行的函数的上一个调用，讲到这里可能就会很明白了，C的调用位置是B，而B的调用位置就是A，那A的调用位置呢？如果A处于调用栈的顶端，则A的调用位置为全局作用域。</p>
+<h3 id="默认绑定"><a href="#默认绑定" class="headerlink" title="默认绑定"></a>默认绑定</h3><blockquote>
+<p>在理解了<strong>调用位置</strong>之后，我们就可以来谈谈<strong>this</strong>的绑定规则了。</p>
+</blockquote>
+<p>思考以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function baz()&#123;</span><br><span class="line">    console.log(this.a);</span><br><span class="line">&#125;</span><br><span class="line">var a = 2;</span><br><span class="line">baz(); //2</span><br></pre></td></tr></table></figure></p>
+<p>这里我们通过 var a =2 声明了一个全局变量a,但我们调用 baz 时，this.a 被解析成为了全局变量 a,那就是说我们这里的 this 指向的是全局作用域，为什么？<br>这就是我们要谈的第一点规则，<strong>默认绑定</strong>。在这里的调用栈即为 baz ，所以 this 被默认绑定到了全局对象上，因此 this 指向的就是全局对象。</p>
+<blockquote>
+<p>但是这里有一个非常重要的细节，只有函数运行在非<strong>严格模式（strict mode</strong>的情况下， this 才能默认绑定到全局对象，在严格模式下 this 是不允许绑定到全局对象上的，如果你要问我什么是严格模式,上百度Google一下。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&apos;use strict&apos;</span><br><span class="line">function baz()&#123;</span><br><span class="line">    console.log(this.a);</span><br><span class="line">&#125;</span><br><span class="line">var a = 2;</span><br><span class="line">baz(); //TypeError: this is undefined</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>在node环境中，在开启strict模式的ES6语法下，上述代码也会是undefined，因为ES6禁止将 this 指向全局对象。</p>
+<p>###隐式绑定</p>
+<p>这是我个人认为使用的最多的一条规则，即判断调用位置是否有上下文。</p>
+<p>思考以下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    console.log(this);</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    a : 2,</span><br><span class="line">    foo : foo</span><br><span class="line">&#125;;</span><br><span class="line">obj.foo(); //2</span><br></pre></td></tr></table></figure></p>
+<p>首先要声明的一点是，不管 foo 是如何定义在对象obj中的，这个函数严格来说都不属于obj对象。然而，调用位置会使用obj上下文来引用函数，因此为了方便理解，可以说成函数被调用时obj对象“包含”或者“拥有”它。但如果我直接调用 foo() 而不是使用 obj.foo(),结果会怎么样呢？那就和我们上文所说的<strong>默认绑定</strong>一样，在非严格模式下，this 会绑定到全局对象，而全局对象上并没有属性 a ,则结果为 undefined 。</p>
+<p>一种更微妙的情况发生在传入回调函数时：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    console.log(this.a);</span><br><span class="line">&#125;</span><br><span class="line">function doFoo(fn)&#123;</span><br><span class="line">    fn();</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    a:2,</span><br><span class="line">    foo:foo</span><br><span class="line">&#125;</span><br><span class="line">var a = &quot; i am global&quot;;</span><br><span class="line">doFoo(obj.foo);</span><br></pre></td></tr></table></figure></p>
+<p>思考一下，这里打印的a将会是什么？ 是 obj对象属性a = 2 还是全局对象属性  a = “ i am global”？ 我可以很负责任的告诉你，打印出来的将会是” i am global”。</p>
+<p>为什么？在调用foo的时候不是有obj上下文吗？为什么 this 不会指向obj对象？其实仔细分析一下函数的调用位置就会知道，函数是在doFoo里的 fn() 处被调用的，obj.foo只是一个参数传递，相当于 var bar = obj.foo； doFoo(bar);这里的bar只是函数的一个别名，实际上他引用的还是foo本身，和直接调用foo()是一个原理，因此 this 默认绑定在了全局对象上，称之为隐式丢失。</p>
+<p>###显式绑定</p>
+<blockquote>
+<p>分析完上面两种绑定方式，你可能会想：能不能不要创建函数对象，把 this 绑定到我想要绑定的函数或者对象上去呢？ 答案是可以的，JavaScript提供了call()和apply()方法帮助你实现更自由的 this 绑定。</p>
+</blockquote>
+<p>这两个方法是如何工作的呢？ 他们的第一个参数是一个对象，他们会把这个对象绑定到 this ，接着在调用函数时指定这个 this 。文字说明可能不太好懂，来看一下代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    console.log(this.a);</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    a : 2</span><br><span class="line">&#125;;</span><br><span class="line">foo.call(obj); //2</span><br></pre></td></tr></table></figure>
+<p>通过foo.call()可以在调用foo时强制把它的this绑定到obj上。但是如果传入的值是一个字符串或者布尔类型的值，那么它将会被转换成他的对象形式，也就是 new String()、new Boolean()。</p>
+<p>典型的应用场景就是创建一个包裹函数，传入所有的参数并返回接收到的所有值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">funtion foo(something)&#123;</span><br><span class="line">    console.log(this.a,something);</span><br><span class="line">    return this.a + something;</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;</span><br><span class="line">    a : 2</span><br><span class="line">&#125;;</span><br><span class="line">var bar = function()&#123;</span><br><span class="line">    return foo.apply(obj,arguments);</span><br><span class="line">&#125;;</span><br><span class="line">var b = bar(3);// 2 3</span><br><span class="line">console.log(b);// 5</span><br></pre></td></tr></table></figure></p>
+<p>这是显式绑定的一种变种方式称之为硬绑定，他可以解决上文所提到的隐式丢失问题，防止函数调用 this 被绑定到全局对象上，但是这种绑定方式未免显得太过僵硬，大大降低了函数的灵活性，使用硬绑定之后就无法使用隐式绑定或者显式绑定来修改 this 。那如果我需要动态修改 this 的指向呢？ 也不是没有方法，思考一下，写了一上午有点饿，下篇博客再讲。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>判断 this 的指向，最重要的是判断函数的调用位置，可以说，函数的调用位置决定了 this 指向的对象。</p>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
                 <source type="audio/mpeg" src>
