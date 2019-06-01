@@ -10,9 +10,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate">
     <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="###问题在上篇博客中，我们简单说了调用栈、默认绑定、隐式与显式绑定等几种规则，还记得文章末留下的问题嘛？
+    <meta name="description" content="问题在上篇博客中，我们简单说了调用栈、默认绑定、隐式与显式绑定等几种规则，还记得文章末留下的问题嘛？
 
-我们通过硬绑定还修改 this 的绑定位置，但是这存在着一个问题，一旦使用硬绑定之后就无,"> 
+我们通过硬绑定还修改 this 的绑定位置，但是这存在着一个问题，一旦使用硬绑定之后就无法使用,"> 
     <meta name="author" content="Hanoch Ma"> 
     <link rel="alternative" href="atom.xml" title="Hanoch - 保持专注" type="application/atom+xml"> 
     <link rel="icon" href="/img/favicon.png"> 
@@ -62,7 +62,7 @@
 
         </div>
         <div class="content markdown">
-            <p>###问题<br>在上篇博客中，我们简单说了调用栈、默认绑定、隐式与显式绑定等几种规则，还记得文章末留下的问题嘛？</p>
+            <h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>在上篇博客中，我们简单说了调用栈、默认绑定、隐式与显式绑定等几种规则，还记得文章末留下的问题嘛？</p>
 <blockquote>
 <p>我们通过硬绑定还修改 this 的绑定位置，但是这存在着一个问题，<strong>一旦使用硬绑定之后就无法使用隐式绑定或者显式绑定来修改 this 的指向，</strong> 函数的灵活性大大降低，作为一个有追求的码农，有没有一种办法既可以自定义 this 的指向，又可以动态的修改呢？</p>
 </blockquote>
@@ -72,10 +72,10 @@
 <p>上面的代码可能难得读懂，大致的意思就是：<strong>首先检查调用时的 this ，如果 this 绑定到全局对象或者undefined，那就把指定的默认对象绑定到this，否则不会修改this。</strong><br>除了软绑定之外，softBind()的其他原理和ES5内置的bind()类似，他会对指定的函数进行封装，<br>下面我们来看看softBind是否实现了软绑定功能：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    console.log(&quot;name&quot; + this.name);</span><br><span class="line">&#125;</span><br><span class="line">var obj = &#123;name : &quot;wanglang&quot;&#125;,</span><br><span class="line">var obj2 = &#123;name : &quot;heiguo&quot;&#125;,</span><br><span class="line">var obj3 = &#123;name : &quot;weige&quot;&#125;;</span><br><span class="line"></span><br><span class="line">var fooOBJ = foo.softBind(obj);</span><br><span class="line"></span><br><span class="line">fooOBJ();// name : wanglang</span><br><span class="line"></span><br><span class="line">obj2.foo =foo.softBind(obj);</span><br><span class="line">obj2.foo(); // name : heiguo  &lt;-发现了吗 this被修改了</span><br><span class="line"></span><br><span class="line">fooOBJ.call(obj3); // name : weige  </span><br><span class="line"></span><br><span class="line">setTimeout(obj2.foo,10);</span><br><span class="line">//name : wanglang  &lt;----软绑定</span><br></pre></td></tr></table></figure>
 <p>从上面的代码我们可以看到，软绑定版本的foo()可以手动将this 绑定到obj2或者obj3上，但如果应用默认绑定，则会将this绑定到obj。</p>
-<p>###注意<br>上面我们说了关于this绑定的几种规则，但有一个特例，在ES6语法中的<strong>箭头函数</strong>是不适用于这些规则的，它的this指向是根据外层作用域来决定的。</p>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>上面我们说了关于this绑定的几种规则，但有一个特例，在ES6语法中的<strong>箭头函数</strong>是不适用于这些规则的，它的this指向是根据外层作用域来决定的。</p>
 <p>举例说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    //返回一个箭头函数</span><br><span class="line">    return (a) =&gt;&#123;</span><br><span class="line">        console.log(this.a);//this继承自foo()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">var obj1 = &#123;</span><br><span class="line">    a: 1</span><br><span class="line">&#125;;</span><br><span class="line">var obj2 = &#123;</span><br><span class="line">    a:2</span><br><span class="line">&#125;;</span><br><span class="line">var bar = foo.call(obj1);</span><br><span class="line">bar.call(obj2);//输出结果为1，而不是2</span><br></pre></td></tr></table></figure></p>
 <p>foo()内部创建的箭头函数会捕获调用时foo的 this，由于foo()的 this 绑定到obj1,bar(引用箭头函数)的 this 也会绑定到obj1,箭头函数的绑定是无法被修改的。</p>
-<p>###总结<br>通过这两篇博客，对 this 的指向或许有了一些新的认识，也让我巩固了一下前面学到的知识，果然，温故而知新。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>通过这两篇博客，对 this 的指向或许有了一些新的认识，也让我巩固了一下前面学到的知识，果然，温故而知新。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
