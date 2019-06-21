@@ -71,7 +71,43 @@ MyBatis 是一款优秀的持久,">
 <p>下面我们来看看Mybatis官方给出的xml配置，一般这个mybatis.xml为mybatis的全局配置，在每行配置后我会给出我自己的注解<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span><br><span class="line">&lt;!DOCTYPE configuration</span><br><span class="line">  PUBLIC &quot;-//mybatis.org//DTD Config 3.0//EN&quot;</span><br><span class="line">  &quot;http://mybatis.org/dtd/mybatis-3-config.dtd&quot;&gt;</span><br><span class="line">&lt;configuration&gt;</span><br><span class="line">  &lt;environments default=&quot;development&quot;&gt;</span><br><span class="line">    &lt;environment id=&quot;development&quot;&gt;</span><br><span class="line">      &lt;transactionManager type=&quot;JDBC&quot;/&gt;</span><br><span class="line">      &lt;dataSource type=&quot;POOLED&quot;&gt;</span><br><span class="line">        &lt;property name=&quot;driver&quot; value=&quot;$&#123;driver&#125;&quot;/&gt;   //JDBC相关 </span><br><span class="line">        &lt;property name=&quot;url&quot; value=&quot;$&#123;url&#125;&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;username&quot; value=&quot;$&#123;username&#125;&quot;/&gt;</span><br><span class="line">        &lt;property name=&quot;password&quot; value=&quot;$&#123;password&#125;&quot;/&gt;</span><br><span class="line">      &lt;/dataSource&gt;</span><br><span class="line">    &lt;/environment&gt;</span><br><span class="line">  &lt;/environments&gt;</span><br><span class="line">  &lt;mappers&gt;</span><br><span class="line">    &lt;mapper resource=&quot;org/mybatis/example/BlogMapper.xml&quot;/&gt;  //映射文件路径，如果有多个映射则可以写多个mapper</span><br><span class="line">  &lt;/mappers&gt;</span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure></p>
 <p>之后Mybatis官方给出了两种使用方式，第一种是从xml文件中创建配置，这种方法个人觉得不太灵活，我主要分享第二种方式，也是我正在使用的一种方式：<strong>用java代码来创建映射。</strong></p>
 <p>这种方式的优点主要是能通过实现接口方法的方式来实现你的sql，虽然我们后面可能不需要写sql，但了解一个框架底层实现能够帮我们加深理解，接下来我们手动编写一个mybatis映射。</p>
-<h3 id="Mybatis映射"><a href="#Mybatis映射" class="headerlink" title="Mybatis映射"></a>Mybatis映射</h3><p>假设有这样一个Product表，包含4个字段:<br>id|productName|brand|price<br>-|-|-|-|<br>1|英雄联盟|腾讯|188<br>2|王者荣耀|腾讯|288<br>3|问道|光宇|388<br>4|逆水寒|网易|888</p>
+<h3 id="Mybatis映射"><a href="#Mybatis映射" class="headerlink" title="Mybatis映射"></a>Mybatis映射</h3><p>假设有这样一个Product表，包含4个字段: </p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>productName</th>
+<th>brand</th>
+<th>price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>英雄联盟</td>
+<td>腾讯</td>
+<td>188</td>
+</tr>
+<tr>
+<td>2</td>
+<td>王者荣耀</td>
+<td>腾讯</td>
+<td>288</td>
+</tr>
+<tr>
+<td>3</td>
+<td>问道</td>
+<td>光宇</td>
+<td>388</td>
+</tr>
+<tr>
+<td>4</td>
+<td>逆水寒</td>
+<td>网易</td>
+<td>888</td>
+</tr>
+</tbody>
+</table>
 <p>一般在开发过程中我们会建一个Model类 Product.java来对应表中的4个字段，这个过程就略去(因为实在太简单 - -)。</p>
 <p>下面我们开始建立Mybatis的映射方法接口ProductDao.java，简单的实现一个插入方法。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public interface ProductDao &#123;</span><br><span class="line">	public void insertProduct(Product product);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>接下来即为mybatis映射文件的配置，我给它的文件名为mybatisMapper.xml。注意：<strong>这里的mybatisMapper.xml和上面的mybatis.xml不一样，上面的是全局配置文件，这里的为实现Dao层接口的映射。</strong></p>
@@ -81,7 +117,49 @@ MyBatis 是一款优秀的持久,">
 <p>接下来的事情就是配置我们自己的mybatisMapper.xml文件:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">  PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span><br><span class="line">  &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line">&lt;mapper namespace=&quot;club.xiaomaguo.www.ProductDao&quot;&gt; //注意：namespace里的一定是我们刚才写的ProductDao接口。</span><br><span class="line">  </span><br><span class="line">  &lt;insert id=&quot;insertProduct&quot;   parameterType=&quot;club.xiaomaguo.www.Product&quot;  &gt; //parameterType即为输入值的类型，这里我们输入的值类型为Product</span><br><span class="line">  //还有一个参数为resultType即为返回值类型，这里我们没有返回值故可以不写</span><br><span class="line">  	insert into product(</span><br><span class="line">  		id,</span><br><span class="line">  		productName,</span><br><span class="line">  		brand,</span><br><span class="line">  		price</span><br><span class="line">  	)values(</span><br><span class="line">  		#&#123;id&#125;,</span><br><span class="line">  		#&#123;productName&#125;,</span><br><span class="line">  		#&#123;brand&#125;,</span><br><span class="line">  		#&#123;price&#125;</span><br><span class="line">  	)</span><br><span class="line">  &lt;/insert&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
 <p>接下来为最后一步，建立一个Junit test类来测试一下我们的mybatis映射。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">       @Test</span><br><span class="line">public void Inserttest() throws IOException &#123;</span><br><span class="line">	String resource = &quot;mybatis.xml&quot;;</span><br><span class="line">	InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">	SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">	SqlSession session = sqlSessionFactory.openSession();</span><br><span class="line">       //以上为官方文档中给出的创建IO流以及SqlSession对象</span><br><span class="line">	try &#123;</span><br><span class="line">		ProductDao mapper = session.getMapper(ProductDao.class);  //实例化一个ProductDao对象</span><br><span class="line">		Product product = new Product(5,&quot;QQ飞车&quot;,&quot;腾讯&quot;,588D);</span><br><span class="line">		mapper.insertProduct(product); //调用接口方法</span><br><span class="line">		session.commit(); //提交事务,这一步千万不能忘记</span><br><span class="line">		</span><br><span class="line">	&#125; finally &#123;</span><br><span class="line">	  session.close();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>进行到这一步，insert操作就已经完成，我们的数据库中的数据也会随着更新。<br>id|productName|brand|price<br>-|-|-|-|<br>1|英雄联盟|腾讯|188<br>2|王者荣耀|腾讯|288<br>3|问道|光宇|388<br>4|逆水寒|网易|888<br>5|QQ飞车|腾讯|588</p>
+<p>进行到这一步，insert操作就已经完成，我们的数据库中的数据也会随着更新。</p>
+<table>
+<thead>
+<tr>
+<th>id</th>
+<th>productName</th>
+<th>brand</th>
+<th>price</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>英雄联盟</td>
+<td>腾讯</td>
+<td>188</td>
+</tr>
+<tr>
+<td>2</td>
+<td>王者荣耀</td>
+<td>腾讯</td>
+<td>288</td>
+</tr>
+<tr>
+<td>3</td>
+<td>问道</td>
+<td>光宇</td>
+<td>388</td>
+</tr>
+<tr>
+<td>4</td>
+<td>逆水寒</td>
+<td>网易</td>
+<td>888</td>
+</tr>
+<tr>
+<td>5</td>
+<td>QQ飞车</td>
+<td>腾讯</td>
+<td>588</td>
+</tr>
+</tbody>
+</table>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>以上只是mybatis的冰山一角，更多的功能需要我们去探索。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
