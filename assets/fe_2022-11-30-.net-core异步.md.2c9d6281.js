@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.97fbe135.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"fe/2022-11-30-.net-core异步.md","lastUpdated":1682243254000}'),r={name:"fe/2022-11-30-.net-core异步.md"};function o(n,c,s,_,p,d){return t(),a("div")}const m=e(r,[["render",o]]);export{i as __pageData,m as default};

@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.97fbe135.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"fe/2022-08-20-apifox.md","lastUpdated":1682243254000}'),o={name:"fe/2022-08-20-apifox.md"};function r(s,c,n,p,f,i){return t(),a("div")}const m=e(o,[["render",r]]);export{d as __pageData,m as default};
