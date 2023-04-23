@@ -1,0 +1,21 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/HanochMa/HanochMa.github.io",
+  "author": "HanochMa",
+  "license": "MIT",
+  "scripts": {
+    "start": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "serve": "vitepress serve docs",
+    "release": "release-it"
+  },
+  "devDependencies": {
+    "@types/node": "^18.14.2",
+    "axios": "^0.27.2",
+    "release-it": "^15.6.0",
+    "sass": "^1.58.3",
+    "vitepress": "^1.0.0-alpha.48"
+  }
+}

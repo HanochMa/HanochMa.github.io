@@ -1,0 +1,31 @@
+name: build to my github
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    # strategy:
+    #   matrix:
+    #     node-version: [node16]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - run: npm install --frozen-lockfile
+
+      - name: Build
+        run: npm run build
+
+      # - name: CreateTag
+      #   run git tag -a
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: docs/.vitepress/dist
