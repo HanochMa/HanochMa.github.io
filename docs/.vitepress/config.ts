@@ -4,7 +4,7 @@ export default defineConfig({
   title: "HanochMa",
   description: "hello world",
   ignoreDeadLinks: true,
-  base: "/blog/",
+  base: "/",
 
   head: [["link", { rel: "icon", type: "image/svg+xml", href: "logo.svg" }]],
   lastUpdated: true,
