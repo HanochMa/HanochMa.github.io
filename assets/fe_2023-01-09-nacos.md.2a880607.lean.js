@@ -1,1 +1,0 @@
-import{_ as e,o as t,c as a}from"./chunks/framework.97fbe135.js";const i=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"fe/2023-01-09-nacos.md","lastUpdated":1682243254000}'),o={name:"fe/2023-01-09-nacos.md"};function s(c,r,n,p,_,d){return t(),a("div")}const m=e(o,[["render",s]]);export{i as __pageData,m as default};
