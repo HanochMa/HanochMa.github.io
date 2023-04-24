@@ -1,4 +1,4 @@
-## about me
+## About Me
 - 我的微信号： mlylh0304
 
 - 我的个人博客源码：[https://github.com/HanochMa/HanochMa.github.io](https://github.com/HanochMa/HanochMa.github.io)

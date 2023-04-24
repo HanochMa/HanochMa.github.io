@@ -6,13 +6,13 @@ title: Home
 hero:
   name: HanochMa
   text: 一个追风的少年
-  tagline: Believe in yourself, there's nothing you can't do！
+  tagline: Live a life with warmth, purity and kindness. Never let go of love and freedom.
   image:
-    src: /home.svg
+    src: /logo.png
     alt: logo
   actions:
     - theme: brand
-      text: 更多详情
+      text: 开始
       link: /daily/
     - theme: alt
       text: 访问我的GitHub
@@ -21,15 +21,15 @@ hero:
       text: 关于我
       link: /me/
 features:
-  - icon: ⚡️ 
+  - icon: 🍫 
     title: 记录生活，记录学习
-    details: 很多时候我们可以停下来，多回头看看，让那些美好的记忆成为永恒，让那些痛苦成为我们的财富
-  - icon: 🖖
-    title: 浅层的学习靠输入，深层的学习靠输出
-    details: 简单的学习可能达到会用的目的就可以了，但想深入便会漏洞百出，让你原型毕露，所以对原理和细节的捕捉要融会贯通，更要进行系统性的学习
-  - icon: 🛠️
+    details: 很多时候我们可以停下来，多回头看看，让那些美好的记忆成为永恒
+  - icon: 🍉
+    title: 整理知识同时也是一个思考的过程
+    details: 简单的学习可能达到会用的目的就可以了，但想深入则必须学会独立思考，思考技术背后的设计思路和本质，让学习更有深度
+  - icon: 🍋
     title: 读源码和发博客
-    details: 读懂别人的代码，就像同他人进行交谈，而博客则更像是会自己学习成果的一种展示，最重要的是取悦自己，而非在意那些
+    details: 读别人的代码，就像同他人进行交谈，而写博客则更像是对自己学习过程的一种复盘，温故而知新
 ---
 
 <script setup>

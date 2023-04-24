@@ -1,6 +1,6 @@
 <template>
   <div class="middle">
-    <h2 className="message"><span @click="jumpClick()">我参与源码共读活动两个月的时间，写了七篇文章，但更重要的是学到更多的知识。源码共读活动，有兴趣的来一起参与一下吧</span></h2>    
+    <h2 className="message"><span @click="jumpClick()">时光不负，创作不停，正在参加2021年终总结征文大赛</span></h2>    
   </div>      
 </template>
 <script lang="ts" setup>
