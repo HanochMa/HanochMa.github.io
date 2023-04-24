@@ -1,6 +1,6 @@
 <template>
   <div class="middle">
-    <h2 className="message"><span @click="jumpClick()">时光不负，创作不停，正在参加2021年终总结征文大赛</span></h2>    
+    <h2 className="message"><span @click="jumpClick()">时光不负，创作不停，本人正在参加2021年终总结征文大赛</span></h2>    
   </div>      
 </template>
 <script lang="ts" setup>

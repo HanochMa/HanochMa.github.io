@@ -6,7 +6,7 @@
   "author": "HanochMa",
   "license": "MIT",
   "scripts": {
-    "start": "vitepress dev docs",
+    "dev": "vitepress dev docs",
     "build": "vitepress build docs",
     "serve": "vitepress serve docs",
     "release": "release-it"
