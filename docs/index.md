@@ -8,7 +8,7 @@ hero:
   text: 一个追风的少年
   tagline: Live a life with warmth, purity and kindness. Never let go of love and freedom.
   image:
-    src: /logo.png
+    src: /home.png
     alt: logo
   actions:
     - theme: brand

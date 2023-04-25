@@ -59,7 +59,7 @@
     - https://www.cnblogs.com/fnz0/p/15803011.html
     - nginx详解 https://www.cnblogs.com/48xz/p/15781821.html
 
-  - **http状态码**
+  - **Http状态码**
     - https://www.cnblogs.com/TankXiao/archive/2013/01/08/2818542.html
 
   - **前端编译**
@@ -80,5 +80,6 @@
   - **面试题目**
     - https://juejin.cn/post/6844903885488783374
 
-  - **图片压缩**
-    - tinypng https://tinypng.com/
+  - **图片处理**
+    - 图片压缩 https://tinypng.com/
+    - 图片格式转换 https://onlineconvertfree.com/zh/compress-image/png-compress/
