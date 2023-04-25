@@ -18,6 +18,7 @@ function getBlogsSidebar() {
         { text: "一文让你彻底理解JSbridge", link: "/blogs/2023-04-25-jsbridge" },
         { text: "Echarts隐藏api之精细化监听click", link: "/blogs/2023-04-25-echartsclick" },
         { text: "教你用Vue3实现移动端Dialog", link: "/blogs/2023-04-25-vue3dialog" },
+        { text: "CSS盒模型", link: "/blogs/2023-04-25-cssbox" },
       ],
     },
   ];
