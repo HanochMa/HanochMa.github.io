@@ -1,20 +1,23 @@
 export default {
-  "/fe/": getFeSidebar(),
+  "/blogs/": getBlogsSidebar(),
   "/daily/": getDailySidebar(),
 };
 
-function getFeSidebar() {
+function getBlogsSidebar() {
   return [
     {
-      text: "前端总结",
+      text: "博客文章",
       items: [
-        { text: "Markdown Icon汇总", link: "/fe/2021-12-31-md-icon" },
-        { text: "Git常用命令", link: "/fe/2022-05-07-git" },
-        { text: "开发规范", link: "/fe/2022-05-15-guifan" },
-        { text: "Typescript定义枚举", link: "/fe/2022-05-20-typescript" },
-        { text: "NPM命令", link: "/fe/2022-05-21-npm" },
-        { text: "VsCode插件和快捷键", link: "/fe/2023-04-24-vscode" },
-        { text: "Markdown语法", link: "/fe/2023-04-23-md-write" },
+        { text: "Markdown Icon汇总", link: "/blogs/2021-12-31-md-icon" },
+        { text: "Git常用命令", link: "/blogs/2022-05-07-git" },
+        { text: "开发规范", link: "/blogs/2022-05-15-guifan" },
+        { text: "Typescript定义", link: "/blogs/2022-05-20-typescript" },
+        { text: "NPM命令", link: "/blogs/2022-05-21-npm" },
+        { text: "VsCode插件和快捷键", link: "/blogs/2023-04-24-vscode" },
+        { text: "Markdown语法", link: "/blogs/2023-04-23-md-write" },
+        { text: "一文让你彻底理解JSbridge", link: "/blogs/2023-04-25-jsbridge" },
+        { text: "Echarts隐藏api之精细化监听click", link: "/blogs/2023-04-25-echartsclick" },
+        { text: "教你用Vue3实现移动端Dialog", link: "/blogs/2023-04-25-vue3dialog" },
       ],
     },
   ];
@@ -26,6 +29,12 @@ function getDailySidebar() {
       text: "2023年每日笔记",
       items: [
         { text: "2023-04", link: "/daily/2023-04" },
+      ],
+    },
+    {
+      text: "一些想说的",
+      items: [
+        { text: "2021年终总结", link: "/daily/2021-sum" },
       ],
     },
   ];

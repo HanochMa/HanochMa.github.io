@@ -12,7 +12,7 @@ hero:
     alt: logo
   actions:
     - theme: brand
-      text: 开始
+      text: 开始搞事
       link: /daily/
     - theme: alt
       text: 访问我的GitHub

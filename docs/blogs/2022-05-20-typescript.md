@@ -1,3 +1,5 @@
+# Typescript定义
+列举一些日常开发中常用的ts定义写法
 ## 1、 reactive 定义 ts 数组
 ```javascript
     export interface TableModel {
@@ -104,7 +106,7 @@
     }
 ```
 
-## 6、5 的升级玩法
+## 6、升级玩法
 
 ```javascript
     interface PageInfo {
@@ -119,7 +121,7 @@
         home: { title: "home" },
     };
 ```
-### 7、typescript中的枚举操作
+## 7、typescript中的枚举操作
   ```js
     //1、声明一个枚举类型   最好定义在ts文件中，不要定义在.d.ts文件中，import引入的时候有问题
     export enum ColumnType {
@@ -145,7 +147,7 @@
       columnList[key] =value
     }
   ```
- #### 8、泛型函数和 箭头泛型函数
+ ## 8、泛型函数和 箭头泛型函数
   ```javascript
     function getUser<T>(id: string) {
       console.log(id, '普通的泛型函数')
@@ -163,7 +165,7 @@
     }
 
   ``` 
-#### 7、通过type和interface 限制某个字符串变量的具体字符串
+## 9、通过type和interface 限制某个字符串变量的具体字符串
   ```javascript 
     
     type EventType = '工资' | '放假'
