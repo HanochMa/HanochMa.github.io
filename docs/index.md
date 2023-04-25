@@ -36,4 +36,4 @@ features:
 import middle from '../src/components/middle.vue'
 </script>
 
-<middle />
+<!-- <middle /> -->

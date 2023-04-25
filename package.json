@@ -14,8 +14,10 @@
   "devDependencies": {
     "@types/node": "^18.14.2",
     "axios": "^0.27.2",
+    "flexsearch": "^0.7.31",
     "release-it": "^15.6.0",
     "sass": "^1.58.3",
-    "vitepress": "^1.0.0-alpha.48"
+    "vitepress": "^1.0.0-alpha.48",
+    "vitepress-plugin-search": "^1.0.4-alpha.20"
   }
 }

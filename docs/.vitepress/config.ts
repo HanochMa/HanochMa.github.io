@@ -1,6 +1,16 @@
 import { defineConfig } from "vitepress";
+import { SearchPlugin } from "vitepress-plugin-search";
 import nav from "./configs/nav";
 import sidebar from "./configs/sidebar";
+const searchOptions: any = {
+  encode: false,
+  tokenize: "full",
+  previewLength: 62,
+  buttonLabel: "Search",
+  placeholder: "Search docs",
+  allow: [],
+  ignore: [],
+};
 export default defineConfig({
   title: "HanochMa",
   description: "hello world",
@@ -31,5 +41,6 @@ export default defineConfig({
         },
       },
     },
+    plugins:[SearchPlugin(searchOptions)]
   },
 });
