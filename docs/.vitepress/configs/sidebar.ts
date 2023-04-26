@@ -19,6 +19,8 @@ function getBlogsSidebar() {
         { text: "Echarts隐藏api之精细化监听click", link: "/blogs/2023-04-25-echartsclick" },
         { text: "教你用Vue3实现移动端Dialog", link: "/blogs/2023-04-25-vue3dialog" },
         { text: "CSS盒模型", link: "/blogs/2023-04-25-cssbox" },
+        { text: "New Vue之后到底发生了什么", link: "/blogs/2023-04-26-newvue-process" },
+        { text: "Webpack优化思路", link: "/blogs/2023-04-26-webpack-opt" },
       ],
     },
   ];

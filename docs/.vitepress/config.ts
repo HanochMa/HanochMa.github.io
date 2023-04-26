@@ -16,10 +16,12 @@ export default defineConfig({
   description: "hello world",
   ignoreDeadLinks: true,
   base: "/",
-
+  cleanUrls: true,
   head: [["link", { rel: "icon", type: "image/png", href: "logo.png" }]],
   lastUpdated: true,
   themeConfig: {
+    outlineTitle: '本页目录',
+    lastUpdatedText: '上次更新',
     logo: "/logo.png",
     nav,
     sidebar,
