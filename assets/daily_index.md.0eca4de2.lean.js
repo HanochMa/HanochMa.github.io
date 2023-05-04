@@ -1,0 +1,1 @@
+import{_ as e,o as r,c as t,V as l}from"./chunks/framework.9928bc23.js";const f=JSON.parse('{"title":"常用汇总","description":"","frontmatter":{},"headers":[],"relativePath":"daily/index.md","lastUpdated":1683194061000}'),a={name:"daily/index.md"},o=l("",5),n=[o];function i(h,s,p,c,g,m){return r(),t("div",null,n)}const w=e(a,[["render",i]]);export{f as __pageData,w as default};
