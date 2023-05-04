@@ -21,6 +21,7 @@ function getBlogsSidebar() {
         { text: "CSS盒模型", link: "/blogs/2023-04-25-cssbox" },
         { text: "New Vue之后到底发生了什么", link: "/blogs/2023-04-26-newvue-process" },
         { text: "Webpack优化思路", link: "/blogs/2023-04-26-webpack-opt" },
+        { text: "Vite的HMR", link: "/blogs/2023-05-04-vite-hmr" },
       ],
     },
   ];
