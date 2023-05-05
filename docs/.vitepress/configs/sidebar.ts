@@ -22,6 +22,12 @@ function getBlogsSidebar() {
         { text: "New Vue之后到底发生了什么", link: "/blogs/2023-04-26-newvue-process" },
         { text: "Webpack优化思路", link: "/blogs/2023-04-26-webpack-opt" },
         { text: "Vite的HMR", link: "/blogs/2023-05-04-vite-hmr" },
+        { text: "Vite的拆包策略", link: "/blogs/2023-05-05-vite-code-splitting" },
+        { text: "前端工程化的演变", link: "/blogs/2023-05-05-frontend-history" },
+        { text: "现代图片性能优化及体验优化方案", link: "/blogs/2023-05-05-image-handle" },
+        { text: "控制反转（IOC）", link: "/blogs/2023-05-05-IOC" },
+        { text: "VSCode是如何优化性能的？", link: "/blogs/2023-05-05-vscode-opt" },
+        { text: "深入浅出vscode插件", link: "/blogs/2023-05-05-vscode-plugin" },
       ],
     },
   ];
