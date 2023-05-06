@@ -59,7 +59,7 @@ VS Code 是少有的核心功能完全使用 Web 技术构建的桌面编辑器�
 
 性能优化是一个长期的过程，并不是某个时间段集中精力优化一波就高枕无忧了，你可以在 VS Code 的 issue 列表里找到一系列标签为 perf 和 startup-perf 相关的 issue，并且这些 issue 都有人长期跟踪解决的。
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872420375-f2b3c221-4c03-41bb-a5b6-1b63d6cf5484.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt1.png)
 
 ## 从哪开始？
 
@@ -67,8 +67,7 @@ VS Code 是少有的核心功能完全使用 Web 技术构建的桌面编辑器�
 
 我们不一定关注以上所有的指标，但有几个对用户体感差异较为明显的指标可以重点关注一下，例如 LCP 、 FID 以及 TTI。
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872420511-5fbc4b72-2181-416e-b614-dfbf68df2abb.png)
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872420399-9e2e641e-6059-4ec6-8363-7fd7295eb749.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt2.png)
 
 还有另一项指标 FMP (First Meaningful Paint 首次有效渲染时间) 不是很推荐，因为它无法直观的识别页面的主体内容是否加载完成，例如某些网站会在有意义的内容渲染前展示一个全屏的 Loading 动画，这对用户来讲显然是没有任何意义的，而相比之下 LCP 更为纯粹，它只看页面主体内容、图像是否加载完成。
 
@@ -76,7 +75,7 @@ VS Code 是少有的核心功能完全使用 Web 技术构建的桌面编辑器�
 
 所以第一步永远是测量，不管是 console.time 还是新的 Performance API，在关键的节点添加这些性能标记，通过大量的数据收集可以得到一个真实的性能指标。VS Code 选择了 Performance API ，这样更方便汇总上报数据。运行 Startup Performance 命令可以看到这些性能指标的耗时 (总耗时2s+, 实际上 TTI 是 977ms)。
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872420394-b7cc9e02-e024-4dbd-bad5-61a09adcebc5.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt3.png)
 
 数据收集除了能看到当前真实的性能指标，更能帮助我们发现耗时花在了哪些地方。要做到这一点，需要找到这些关键节点。VS Code 是基于 Electron ，除了常规的页面渲染之外，还有一包括等待 Electron App Ready、创建窗口、LoadURL 等耗时，这部分的性能有专业的团队来保障(Electron、V8)，不需要关心太多。所以重点需要关心的是 UI 部分的呈现及可交互时间。
 
@@ -92,7 +91,7 @@ VS Code 是少有的核心功能完全使用 Web 技术构建的桌面编辑器�
 
 ### V8 Code Cache
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872420788-b0e688de-1902-4f06-ba7e-cbd92196a730.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt4.png)
 
 V8 Code Cache 的目的是减少对 JavaScript 代码的解析与编译开销，我们知道 V8 使用 JIT (Just in time compilation) 来执行 JavaScript 代码，也就是说在 JS 脚本执行之前，必须对其进行解析和编译，这一步的开销是较大的。而 Code Cache 技术是在首次编译时将结果缓存下来，下一次加载相同的脚本时直接读取磁盘上的缓存来执行，省去了解析、编译的过程，从而使脚本执行更快。V8 提供了开放的 API，因此，任何使用 V8 的软件都可以调用该 API，同时 Node.js 5.7.0 版本起 vm 模块也提供了对该 API 的包装。由于 VS Code 使用 AMD Loader 作为模块加载器，所以内置实现了 V8 Code Cache。
 
@@ -102,7 +101,7 @@ V8 Code Cache 的目的是减少对 JavaScript 代码的解析与编译开销，
 import 'v8-compile-cache';
 ```
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872420877-430acb21-b369-41e8-88ab-a2698953c9bf.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt5.png)
 
 经过一系列的优化，VS Code 的 JS Bundle 加载速度从一开始的接近 1.5 秒优化到了 0.5 秒。
 
@@ -112,7 +111,7 @@ import 'v8-compile-cache';
 
 拆分生命周期的一个重要目的就是将这些核心功能的优先级进行排序，黄金原则就是尽可能快的让用户最关心的界面先渲染出来。对于 VS Code 来说，就是文件资源管理器和编辑器。VS Code 的核心功能都是通过 Contribution 来注册的。在早期的版本中，这些贡献点会在启动时就全部一起进行注册，这直接导致编辑器的加载被阻塞，最直观的表现就是界面所有 UI 都已经渲染出来并且可操作时，编辑器内的文本还没有加载出来(它们可能很大)。
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872420952-ced356d7-fdf7-46f4-83ad-29ff9e4415c3.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt6.png)
 
 拆分生命周期阶段本质上就是将这些贡献点分阶段来实例化，具体来说，VS Code 将整个启动的生命周期分为了四个阶段
 
@@ -123,7 +122,7 @@ import 'v8-compile-cache';
 
 生命周期执行的核心代码
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872421114-8d101bf0-e582-4d30-9640-dd3daba7bbe0.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt7.png)
 
 正如分享的作者 Johannes Rieken 所说，这并不是非常复杂的技术问题，而是以一种更聪明的方式来对启动过程重新排序。这样一来，整体的启动过程会更加的有序，对于一些不是那么重要的任务，将它们的优先级靠后一些，从而确保能在第一时间将编辑器呈现出来，使用户进入可以编辑的状态。
 
@@ -135,23 +134,23 @@ requestIdleCallback 可以传入第二个参数，表示超时时间。表示最
 
 一般来说应该将执行时机交还给浏览器，让浏览器自行决定何时调用回调，如果设置了超时时间，则可能因为执行顺序被打乱。
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872421176-18b39036-daca-493c-8b1d-91e522aaed23.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt8.png)
 
 ## Perceived Performance，让体感更快的小技巧
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872421176-96ebe8d2-99c4-4fc6-a81f-3cdf5468c9a6.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt9.png)
 
 对于一些耗时的确会很长的操作，例如打开一个巨大的文件，显然即便是性能最好的的优化手段，也无法将这种耗时降到毫秒级。但我们可以通过一些小的手段让这种交互 感觉更快。例如在这个 Case 中，点击打开一个大文件(2.5m)时，先将编辑器 Tab 以及面包屑渲染出来。
 
-![img](https://cdn.nlark.com/yuque/0/2023/gif/12550589/1681872421337-db921a35-2a00-4fbc-925f-e24ee36284ad.gif)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt10.gif)
 
 除此之外，对于切换编辑器 Tab 时，使用 MouseDown 而非 MouseUp 事件，一次点击事件从触发 MouseDown 到 MouseUp 中间的耗时平均是50ms，这意味着在切换编辑器时，鼠标点击至少 50ms 后包括 Tab 以及面包屑才会有反应。我们可以写一个很简单的 Demo 来观察这两者的区别。
 
-![img](https://cdn.nlark.com/yuque/0/2023/gif/12550589/1681872421479-071bb29f-7ceb-4bfa-8ecb-4c8d4265ceba.gif)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt11.gif)
 
 例如这张截图中，点击 package.json 时，文件内容还是另一个文件，而面包屑已经变成了 package.json。使用这种小技巧，在 VS Code 中切换编辑器时，会令用户觉得「反应好快」。
 
-![img](https://cdn.nlark.com/yuque/0/2023/png/12550589/1681872421506-3e00b617-6bed-4b1e-81e5-32b07871b55b.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-opt12.png)
 
 不建议在所有点击事件触发的地方都使用 MouseDown 来代替 MouseUp，因为复杂的 UI 可能还需要处理如拖动等事件，这会让事件处理更加复杂。
 

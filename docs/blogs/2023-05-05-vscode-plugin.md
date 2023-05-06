@@ -29,13 +29,13 @@ yo code
 
 跟着提示一步步操作，脚手架提供了各种不同功能的模版，根据功能需求选择。
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/12550589/1632641931407-119b7c4e-6c2d-41ef-a27f-9c7069b2a961.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-plugin1.png)
 
 ### 项目结构
 
 项目结构很简单，主要是两个文件，**extension.js**(插件入口文件，实现插件功能) 和 **package.json**(清单文件，功能配置)
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/12550589/1632827756889-64b2d2a1-e454-4df9-9f33-e9bd9918af36.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-plugin2.png)
 
 ### 配置文件解析
 
@@ -292,13 +292,13 @@ module.exports = {
 
 默认情况下，工程已经帮我们配置好了调试相关参数（有兴趣的可以查看.vscode/launch.json文件的写法），只需要到调试面板选中要调试的项目(仅仅是第一次需要，后续会自动记住上次调试的项目)，然后按下F5就会弹出一个新的vscode窗口，这个新窗口则是我们的调试窗口。简单的来说，新窗口中vscode自动帮我们安装了刚才写的插件，供我们调试代码。
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/12550589/1632830213328-5ee2ede4-c6b2-40c2-bb9d-e40abd22dea6.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-plugin3.png)
 
 
 
 在新窗口中（title上会有个[拓展开发宿主]用来区分），我们按下Ctrl+Shift+P，运行命令Hello World，即可看到效果。
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/12550589/1632830510680-e54b63d7-a108-40e3-bc94-4de6ee2acb01.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-plugin4.png)
 
 ## 打包发布升级
 
@@ -336,13 +336,13 @@ vsce package
 
 点击右上角头像 -> Personal access tokens
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/12550589/1632831625697-415f0c7c-d9ff-4558-97c0-b766e8945fd6.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-plugin2.png)
 
 
 
 newtoken ->输入token名
 
-![img](https://cdn.nlark.com/yuque/0/2021/png/12550589/1632831810591-a64b2d85-e88d-4f57-b495-5b9430c1e1b5.png)
+![img](https://github.com/HanochMa/PictureBed/raw/main/blogs/vscode-plugin6.png)
 
 点击create后会生成一个token（**注意：网站不会帮你保存，生成后需要马上copy下来**）
 
