@@ -26,8 +26,9 @@ function getBlogsSidebar() {
         { text: "前端工程化的演变", link: "/blogs/2023-05-05-frontend-history" },
         { text: "现代图片性能优化及体验优化方案", link: "/blogs/2023-05-05-image-handle" },
         { text: "控制反转（IOC）", link: "/blogs/2023-05-05-IOC" },
-        { text: "VSCode是如何优化性能的？", link: "/blogs/2023-05-05-vscode-opt" },
+        { text: "VSCode是如何优化性能的", link: "/blogs/2023-05-05-vscode-opt" },
         { text: "深入浅出vscode插件", link: "/blogs/2023-05-05-vscode-plugin" },
+        { text: "HTTP2.0是如何优化传输性能的", link: "/blogs/2023-05-09-http2" },
       ],
     },
   ];
