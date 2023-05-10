@@ -33,7 +33,7 @@ features:
 ---
 
 <script setup>
-import middle from '../src/components/middle.vue'
+import TimeCalculator from '../src/components/TimeCalculator.vue'
 </script>
 
-<!-- <middle /> -->
+<TimeCalculator />
