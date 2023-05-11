@@ -1,7 +1,7 @@
 <template>
     <div class="time-search">
         <el-time-picker v-model="startWorkTime" :default-value="defaultTime" placeholder="输入上班打卡时间" />
-        <el-button style="margin-left: 16px" type="primary" round @click="calEndTime">下班时间</el-button>
+        <el-button class="cal-button" type="primary" round @click="calEndTime">下班时间</el-button>
     </div>
     <div class="time-static" v-if="showTime">
         <el-statistic title="下班打卡" :value="endWorkTime" />
@@ -11,6 +11,9 @@
 <script lang="ts" setup>
 import { computed, ref } from 'vue'
 import dayjs from 'dayjs'
+import JSConfetti from 'js-confetti'
+const jsConfetti = new JSConfetti()
+
 const startWorkTime = ref('')
 const getEndTime = (workTime: number) => {
     if (!startWorkTime.value) {
@@ -23,6 +26,7 @@ const endWorkTime = computed(() => getEndTime(8.5))
 const freeDinerTime = computed(() => getEndTime(11))
 const showTime = ref(false)
 const calEndTime = () => {
+    jsConfetti.addConfetti()
     showTime.value = true
 }
 const defaultTime = dayjs().set('hour', 9).set('minute', 0).set('second', 0)
@@ -34,6 +38,14 @@ const defaultTime = dayjs().set('hour', 9).set('minute', 0).set('second', 0)
     justify-content: center;
     margin-top: 64px;
     color: var(--vp-c-brand);
+    .cal-button{
+        margin-left: 16px;
+        background-color: var(--vp-c-brand);
+        border-color: var(--vp-c-brand-light);
+    }
+    .cal-button:hover{
+        background-color: var(--vp-c-brand-light);
+    }
 }
 
 .time-static {

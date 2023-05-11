@@ -1,30 +1,36 @@
 {
-  "hash": "809922be",
-  "browserHash": "0bc601e7",
+  "hash": "87811296",
+  "browserHash": "5e4d5bdd",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "e879e3e1",
+      "fileHash": "3ebeba3a",
       "needsInterop": false
     },
     "element-plus": {
       "src": "../../../../node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "3490ce35",
+      "fileHash": "16f03574",
       "needsInterop": false
     },
     "@element-plus/icons-vue": {
       "src": "../../../../node_modules/@element-plus/icons-vue/dist/index.js",
       "file": "@element-plus_icons-vue.js",
-      "fileHash": "5042d7aa",
+      "fileHash": "423f7dc0",
       "needsInterop": false
     },
     "dayjs": {
       "src": "../../../../node_modules/dayjs/dayjs.min.js",
       "file": "dayjs.js",
-      "fileHash": "f05ba004",
+      "fileHash": "1f290717",
       "needsInterop": true
+    },
+    "js-confetti": {
+      "src": "../../../../node_modules/js-confetti/dist/es/index.js",
+      "file": "js-confetti.js",
+      "fileHash": "91a90fa9",
+      "needsInterop": false
     }
   },
   "chunks": {

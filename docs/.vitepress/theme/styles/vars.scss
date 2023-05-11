@@ -55,6 +55,17 @@
   --vp-home-hero-image-filter: blur(40px);
 }
 
+/**
+ * Component: doc search
+ * -------------------------------------------------------------------------- */
+
+:root {
+  --docsearch-spacing: 12px
+}
+
+.DocSearch-Form{
+  padding: var(--docsearch-spacing);
+}
 
 
 
