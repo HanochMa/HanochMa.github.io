@@ -29,6 +29,9 @@ function getBlogsSidebar() {
         { text: "VSCode是如何优化性能的", link: "/blogs/2023-05-05-vscode-opt" },
         { text: "深入浅出vscode插件", link: "/blogs/2023-05-05-vscode-plugin" },
         { text: "HTTP2.0是如何优化传输性能的", link: "/blogs/2023-05-09-http2" },
+        { text: "深入浅出PNPM", link: "/blogs/2023-05-11-pnpm" },
+        { text: "如何做一个有质量的技术分享", link: "/blogs/2023-05-15-tech-share" },
+        { text: "使用简单的逻辑方法进行独立思考", link: "/blogs/2023-05-15-think-method" },
       ],
     },
   ];
