@@ -32,6 +32,7 @@ function getBlogsSidebar() {
         { text: "深入浅出PNPM", link: "/blogs/2023-05-11-pnpm" },
         { text: "如何做一个有质量的技术分享", link: "/blogs/2023-05-15-tech-share" },
         { text: "使用简单的逻辑方法进行独立思考", link: "/blogs/2023-05-15-think-method" },
+        { text: "聊聊TCP握手", link: "/blogs/2023-05-15-tcp-handshake" },
       ],
     },
   ];
