@@ -18,11 +18,14 @@ export default defineConfig({
   ignoreDeadLinks: true,
   base: "/",
   cleanUrls: true,
-  head: [["link", { rel: "icon", type: "image/png", href: "logo.png" }]],
+  head: [
+    ["link", { rel: "icon", type: "image/png", href: "logo.png" }],
+    ["meta", {name: "baidu-site-verification", content: "codeva-kpyolTmPBl"}],
+  ],
   lastUpdated: true,
   themeConfig: {
-    outlineTitle: '本页目录',
-    lastUpdatedText: '上次更新',
+    outlineTitle: "本页目录",
+    lastUpdatedText: "上次更新",
     logo: "/logo.png",
     nav,
     sidebar,
@@ -44,6 +47,6 @@ export default defineConfig({
         },
       },
     },
-    plugins:[SearchPlugin(searchOptions)]
+    plugins: [SearchPlugin(searchOptions)],
   },
 });
