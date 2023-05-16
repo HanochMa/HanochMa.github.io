@@ -2,6 +2,7 @@ import { defineConfig } from "vitepress";
 import { SearchPlugin } from "vitepress-plugin-search";
 import nav from "./configs/nav";
 import sidebar from "./configs/sidebar";
+
 const searchOptions: any = {
   encode: false,
   tokenize: "full",

@@ -1,10 +1,6 @@
-# 常用汇总
+# 我的笔记
 
 ## 阅读
-
-- **IOC && NestJS**
-
-  - https://www.yuque.com/hanochma/ph8kvf/ny150b?singleDoc# 《控制反转（IOC）》
 
 - **源码共读**
 
@@ -13,18 +9,12 @@
 - **前端阅读系列**
   - 前端每周更新 https://github.com/ascoders/weekly
   - es6 https://es6.ruanyifeng.com
-  - ts https://www.typescriptlang.orghttps://www.canva.cn
   - 文章翻译系列 https://github.com/xitu/gold-miner
 - **前端实现录音**
   - https://github.com/xiangyuecn/Recorder
 - **graphql**
-
   - https://graphql.cn/
   - https://graphql.cn/code/#c-net
-
-- **Markdown 下的 timeline 时间轴**
-
-  - https://markdown.jianguoyun.com/2945.html
 
 - **低代码参考**
   - 可视化大屏http://v6.dooring.cn/beta/editor
