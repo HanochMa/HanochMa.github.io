@@ -1,0 +1,1 @@
+import{_ as a,o as t,c as e,V as o}from"./chunks/framework.0433447c.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"daily/2021-sum.md","lastUpdated":1684221978000}'),r={name:"daily/2021-sum.md"},i=o("",18),l=[i];function n(s,p,c,d,h,u){return t(),e("div",null,l)}const f=a(r,[["render",n]]);export{m as __pageData,f as default};
