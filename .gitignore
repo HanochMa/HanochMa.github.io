@@ -19,5 +19,3 @@ selenium-debug.log
 *.njsproj
 *.sln
 
-# ad
-docs/.vuepress/theme

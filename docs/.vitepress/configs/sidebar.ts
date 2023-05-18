@@ -33,6 +33,7 @@ const network = {
   items: [
     { text: "HTTP2.0是如何优化传输性能的", link: "/blogs/network/2023-05-09-http2" },
     { text: "聊聊TCP握手", link: "/blogs/network/2023-05-15-tcp-handshake" },
+    { text: "HTTP的前世今生", link: "/blogs/network/2023-05-18-http-history" },
   ],
 }
 
