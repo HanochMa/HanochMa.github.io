@@ -2,7 +2,7 @@ import { defineConfig } from "vitepress";
 import { SearchPlugin } from "vitepress-plugin-search";
 import nav from "./configs/nav";
 import sidebar from "./configs/sidebar";
-
+// import timeline from 'vitepress-markdown-timeline'
 const searchOptions: any = {
   encode: false,
   tokenize: "full",
@@ -35,6 +35,11 @@ export default defineConfig({
       copyright: "Copyright © 2023-04-23～present HanochMa",
     },
   },
+  // markdown: {
+  //   config: (md) =>{
+  //     md.use(timeline)
+  //   }
+  // },
   vite: {
     server: {
       host: true,

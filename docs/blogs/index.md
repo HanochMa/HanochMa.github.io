@@ -4,4 +4,13 @@
 
 于是我就在github上新建了一个仓库，然后开始书写Markdown记录笔记了。以前都是在公司wiki或者语雀上记录，一个是离职以后不好迁移，再就是语雀也越来越偏向于会员化，于是想着搞个自己的博客托管在github上
 
-刚开始还有一些犹豫一直想使用vuepress,毕竟之前有用过vuepress搭建公司的组件库，但是又想尝试新鲜的vitepress,在我正在犹豫的时候我看到一个非常亮眼的优点：可以在md文档里面混合使使vue3的组件，于是果断使用vitepress。
+刚开始还有一些犹豫一直想使用vuepress,毕竟之前有用过vuepress搭建公司的组件库，但是又想尝试新鲜的vitepress,在我正在犹豫的时候我看到一个非常亮眼的优点：可以在md文档里面混合使用vue3的组件，于是果断使用vitepress。
+
+<!-- ::: timeline 时间
+- **test timeline**
+- abc
+:::
+熬不到手机打开手机看见看见
+::: timeline 默认时间
+test timeline22222
+::: -->
