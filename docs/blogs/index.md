@@ -6,11 +6,3 @@
 
 刚开始还有一些犹豫一直想使用vuepress,毕竟之前有用过vuepress搭建公司的组件库，但是又想尝试新鲜的vitepress,在我正在犹豫的时候我看到一个非常亮眼的优点：可以在md文档里面混合使用vue3的组件，于是果断使用vitepress。
 
-<!-- ::: timeline 时间
-- **test timeline**
-- abc
-:::
-熬不到手机打开手机看见看见
-::: timeline 默认时间
-test timeline22222
-::: -->

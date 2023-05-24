@@ -3,7 +3,7 @@ import './styles/vars.scss'
 import './styles/style.scss'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
-// import 'vitepress-markdown-timeline/dist/theme.css'
+import 'vitepress-markdown-timeline/dist/theme.css'
 export default {
   ...Theme,
   enhanceApp(ctx) {
