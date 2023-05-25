@@ -18,7 +18,7 @@
     "release-it": "^15.6.0",
     "sass": "^1.58.3",
     "vitepress": "^1.0.0-alpha.48",
-    "vitepress-markdown-timeline": "^1.0.0",
+    "vitepress-markdown-timeline": "^1.2.0",
     "vitepress-plugin-search": "^1.0.4-alpha.20"
   },
   "dependencies": {
