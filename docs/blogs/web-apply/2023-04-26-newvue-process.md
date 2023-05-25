@@ -32,3 +32,5 @@ new Vue()后，会调用init函数进行初始化，初始化生命周期、事�
 
 ## 四、Virtual DOM
 render function执行会生成vnode节点，vnode对应真实dom中的每个节点，每次渲染视图时都是先创建vnode，然后使用vnode创建真实的dom插入到页面中，所以可以将上一次渲染的vonde缓存起来，之后每次需要重新渲染视图的时候，将这一次与上一次的vnode做对比（涉及到diff算法），看看他们有哪些不一样的地方，基于这些不一样的地方再去修改真实的dom。
+
+<git-talk />

@@ -45,3 +45,5 @@ myChart.getZr().on("click", (params) => {
 P.S. Zr 是 zrender 的缩写，zrender 是 echarts 的底层依赖。
 
 **不过咱们项目中一般都会锁定依赖版本，只要不轻易的去变更版本号，就可以放心大胆的用啦~**
+
+<git-talk />

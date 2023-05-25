@@ -180,3 +180,5 @@ References
 - New JavaScript techniques for rapid page loads
 
 - - https://blog.chromium.org/2015/03/new-javascript-techniques-for-rapid.html
+
+<git-talk />

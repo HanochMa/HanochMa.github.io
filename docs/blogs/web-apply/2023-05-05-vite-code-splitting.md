@@ -369,3 +369,5 @@ export default {
 ```
 
 相比于手动操作依赖关系，使用插件只需几行配置就能完成，非常方便。当然，这个插件还可以支持多种打包策略，包括 unbundle 模式打包，你可以去 [使用文档](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fsanyuan0704%2Fvite-plugin-chunk-split%2Fblob%2Fmaster%2FREADME-CN.md) 探索更多使用姿势。
+
+<git-talk />

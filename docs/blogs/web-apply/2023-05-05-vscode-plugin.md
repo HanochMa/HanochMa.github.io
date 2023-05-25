@@ -612,3 +612,5 @@ export function activate(context: vscode.ExtensionContext) {
 ## 参考文档
 
 官方api文档 https://code.visualstudio.com/api/references/vscode-api
+
+<git-talk />

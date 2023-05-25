@@ -175,3 +175,5 @@ let iType1: IEventType = {}
 iType1.name= '工资'    // OK 赋值只能为“工资”或“放假”
 iType1.name = '测试'  // 报错
 ```  
+
+<git-talk />
