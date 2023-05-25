@@ -12,6 +12,7 @@
     "release": "release-it"
   },
   "devDependencies": {
+    "@algolia/client-search": ">= 4.9.1 < 6",
     "@types/node": "^18.14.2",
     "axios": "^0.27.2",
     "flexsearch": "^0.7.31",
@@ -19,11 +20,14 @@
     "sass": "^1.58.3",
     "vitepress": "^1.0.0-alpha.48",
     "vitepress-markdown-timeline": "^1.2.0",
-    "vitepress-plugin-search": "^1.0.4-alpha.20"
+    "vitepress-plugin-search": "^1.0.4-alpha.20",
+    "vue": ">=3.2.0 <4.0.0"
   },
   "dependencies": {
     "dayjs": "^1.11.7",
     "element-plus": "^2.3.4",
-    "js-confetti": "^0.11.0"
+    "gitalk": "^1.8.0",
+    "js-confetti": "^0.11.0",
+    "md5": "^2.3.0"
   }
 }

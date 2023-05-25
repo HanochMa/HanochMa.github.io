@@ -1,23 +1,38 @@
 {
-  "hash": "622ed675",
-  "browserHash": "2288f904",
+  "hash": "3338ec9c",
+  "browserHash": "6ed9e739",
   "optimized": {
     "vue": {
-      "src": "../../../../node_modules/vue/dist/vue.runtime.esm-bundler.js",
+      "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "2befba3a",
+      "fileHash": "3c33bff6",
       "needsInterop": false
     },
     "element-plus": {
-      "src": "../../../../node_modules/element-plus/es/index.mjs",
+      "src": "../../../../node_modules/.pnpm/element-plus@2.3.5_vue@3.3.4/node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "5d6ecac5",
+      "fileHash": "96ff5096",
       "needsInterop": false
+    },
+    "md5": {
+      "src": "../../../../node_modules/.pnpm/md5@2.3.0/node_modules/md5/md5.js",
+      "file": "md5.js",
+      "fileHash": "329b961b",
+      "needsInterop": true
+    },
+    "gitalk": {
+      "src": "../../../../node_modules/.pnpm/gitalk@1.8.0/node_modules/gitalk/dist/gitalk.js",
+      "file": "gitalk.js",
+      "fileHash": "dc810517",
+      "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-YJNUPD57": {
-      "file": "chunk-YJNUPD57.js"
+    "chunk-F33YWGZ4": {
+      "file": "chunk-F33YWGZ4.js"
+    },
+    "chunk-DFKQJ226": {
+      "file": "chunk-DFKQJ226.js"
     }
   }
 }
