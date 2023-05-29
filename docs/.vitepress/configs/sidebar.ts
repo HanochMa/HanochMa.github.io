@@ -25,7 +25,8 @@ const commonSkill = {
     { text: "Markdown语法", link: "/blogs/common-skill/2023-04-23-md-write" },
     { text: "如何做一个有质量的技术分享", link: "/blogs/common-skill/2023-05-15-tech-share" },
     { text: "使用简单的逻辑方法进行独立思考", link: "/blogs/common-skill/2023-05-15-think-method" },
-    { text: "Typora+PicGo+Github无缝上传图片", link: "/blogs/common-skill/2023-05-23-typora-picbed" }
+    { text: "Typora+PicGo+Github无缝上传图片", link: "/blogs/common-skill/2023-05-23-typora-picbed" },
+    { text: "自动打包部署Github Pages", link: "/blogs/common-skill/2023-05-26-github-workflow" }
   ],
 }
 

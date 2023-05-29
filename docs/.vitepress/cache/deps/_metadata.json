@@ -1,33 +1,48 @@
 {
   "hash": "3338ec9c",
-  "browserHash": "6ed9e739",
+  "browserHash": "31d6ff3b",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.3.4/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "3c33bff6",
+      "fileHash": "6f65a27a",
       "needsInterop": false
     },
     "element-plus": {
       "src": "../../../../node_modules/.pnpm/element-plus@2.3.5_vue@3.3.4/node_modules/element-plus/es/index.mjs",
       "file": "element-plus.js",
-      "fileHash": "96ff5096",
+      "fileHash": "f14d1793",
       "needsInterop": false
     },
     "md5": {
       "src": "../../../../node_modules/.pnpm/md5@2.3.0/node_modules/md5/md5.js",
       "file": "md5.js",
-      "fileHash": "329b961b",
+      "fileHash": "cc062d43",
       "needsInterop": true
     },
     "gitalk": {
       "src": "../../../../node_modules/.pnpm/gitalk@1.8.0/node_modules/gitalk/dist/gitalk.js",
       "file": "gitalk.js",
-      "fileHash": "dc810517",
+      "fileHash": "ad650a6d",
       "needsInterop": true
+    },
+    "dayjs": {
+      "src": "../../../../node_modules/.pnpm/dayjs@1.11.7/node_modules/dayjs/dayjs.min.js",
+      "file": "dayjs.js",
+      "fileHash": "0fac2516",
+      "needsInterop": true
+    },
+    "js-confetti": {
+      "src": "../../../../node_modules/.pnpm/js-confetti@0.11.0/node_modules/js-confetti/dist/es/index.js",
+      "file": "js-confetti.js",
+      "fileHash": "9ec03312",
+      "needsInterop": false
     }
   },
   "chunks": {
+    "chunk-HAKDD5A2": {
+      "file": "chunk-HAKDD5A2.js"
+    },
     "chunk-F33YWGZ4": {
       "file": "chunk-F33YWGZ4.js"
     },
